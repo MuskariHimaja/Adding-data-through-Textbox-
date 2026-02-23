@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+    *{
+     background-color:rgb(37, 37, 154);
+    }
+    #textbox{
+    background-color: white;
+    height:6vh;
+    width:24vw;
+    margin-top: 15vh;
+    margin-left:33vw;
+    border-radius: 7px;
+    }
+    #btn{
+    background-color: white;
+    height:7vh;
+    width:5vw;
+    border-radius: 7px;
+    }
+      #output {
+        margin-top: 15px;
+        font-size: 18px;
+      }
+      .item {
+        margin: 5px 0;
+        margin-left: 43vw;
+        font-weight: bold;
+        color:black;
+      }
+      .wrong {
+        color:black;
+        cursor: pointer;
+        margin-left: 2vw;
+        font-weight: bold;
+      }
+    </style>
+</head>
+<body>
+    <input type="text" id="textbox" placeholder="Type something...">
+    <button id="btn">Add</button>
+    <div id="output"></div>
+
+    <script>
+      document.getElementById("btn").addEventListener("click", showText);
+      function showText() {
+        let text = document.getElementById("textbox").value;
+        if (text.trim() === "") return;
+
+        let div = document.createElement("div");
+        div.className = "item";
+
+        let span = document.createElement("span");
+        span.innerText = text;
+
+        let wrong = document.createElement("span");
+        wrong.innerText = "x";
+        wrong.className = "wrong";
+        wrong.onclick = function() {
+          div.remove();
+        };
+
+        div.appendChild(span);
+        div.appendChild(wrong);
+        document.getElementById("output").appendChild(div);
+        document.getElementById("textbox").value = "";
+      }
+    </script>
+</body>
+</html>
